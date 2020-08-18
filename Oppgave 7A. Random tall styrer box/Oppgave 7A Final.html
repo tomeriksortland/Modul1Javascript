@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            background-image: url(Oppgave7ABilde.jpg);
+        }
+        
+        h1 {
+                color:red;
+                text-align: center;
+                font-size: 50px;
+            }
+       
+        .res1 {
+            color: red;
+            text-align: center;
+            font-size: 50px;        
+            }
+
+           .res2 {
+            background-color: yellow;
+           }
+  
+
+    
+    </style>
+
+</head>
+<body>
+    <h1>Ferdighet 7a</h1>
+    
+    
+    
+    <div id="resultat" class='res1'></div>
+    <div id="resultat2" class='res2'></div>
+
+
+    <script>
+       
+        var resultatDiv = document.getElementById('resultat');
+        var resultatBox = document.getElementById('resultat2')
+        var tallA = 100 + Math.floor(Math.random() * 50);
+        var tallB = 100 + Math.floor(Math.random() * 50);
+        var bordernr = 10 + Math.floor(Math.random() * 10);
+        var bredde = tallA + tallB;
+        var høyde = tallA + tallB;
+        calculate();
+       
+        function calculate() {
+            
+     
+            
+            resultatDiv.innerHTML = '' +
+                'Bredde:' + tallA + '+' + tallB + '=' + bredde + '<br/>' +
+                'Høyde:' + tallA + '+' + tallB + '=' + høyde + '<br/>' +
+                'Borderstr:' + tallA + '+' + tallB + '=' + bordernr + '<br/>'
+        }
+               
+             showDiv();
+        function showDiv() {
+              
+            resultatBox.innerHTML = '<div style="'
+                + 'width: ' + bredde + 'px;'
+                + 'height: ' + høyde + 'px;'
+                + 'border: '+ bordernr + 'px ' + 'solid red;'
+                + '">'
+                 + '</div>';
+        }
+    </script>
+</body>
+</html>

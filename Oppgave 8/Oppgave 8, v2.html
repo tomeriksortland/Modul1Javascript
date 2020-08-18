@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <style>
+        .bckgrndcolor {
+            background-color: yellow;
+        }
+
+        .colorz {
+            color: red;
+        }
+
+        .outlinez {
+            outline-style: solid;
+            outline-color: navy;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bla" onclick="selectdiv(this)">Div 1</div>
+    <div id="bla3" onclick="selectdiv(this)">Div 2</div>
+    <div id="bla2" onclick="selectdiv(this)">Div 3</div>
+    </br>
+
+    <input id="chk1" type="checkbox" onchange="toggleStyle()" />
+    <input id="chk2" type="checkbox" onchange="toggleStyle()" />
+    <input id="chk3" type="checkbox" onchange="toggleStyle()" />
+    </br>
+
+
+
+    <script>
+        var isChecked = document.getElementById('chk1');
+        var isChecked2 = document.getElementById('chk2');
+        var isChecked3 = document.getElementById('chk3');
+        var selecteddiv;
+        
+        function toggleStyle() {
+            document.getElementById(selecteddiv).classList.toggle('bckgrndcolor', isChecked.checked);
+            document.getElementById(selecteddiv).classList.toggle('colorz', isChecked2.checked);
+            document.getElementById(selecteddiv).classList.toggle('outlinez', isChecked3.checked);
+        }
+        function selectdiv(clickeddiv) {
+            isChecked.checked = false;
+            isChecked2.checked = false;
+            isChecked3.checked = false;
+            selecteddiv = clickeddiv.id;
+        }
+    </script>
+</body>
+
+</html>

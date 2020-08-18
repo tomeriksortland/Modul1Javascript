@@ -1,0 +1,140 @@
+<body>
+
+    <div id="content">
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            show();
+        });
+
+
+        // hjelpevariable for både view og controller
+        let contentDiv = document.getElementById('content');
+
+        // model
+        let numbers = [1, 2, 3, 4, 5];
+        let chosenBar = 'ingen';
+
+
+
+        // view
+
+
+
+        function show() {
+            let svgInnerHtml = '';
+            for (let i = 0; i < numbers.length; i++) {
+                svgInnerHtml += createBar(numbers[i], i + 1);
+            }
+
+
+
+
+            contentDiv.innerHTML = `
+                <svg id="chart" width="500" viewBox="0 0 80 60">
+                    ${svgInnerHtml}
+                </svg><br/>
+                Valgt stolpe: <i>${chosenBar}</i>
+                <br />
+                Verdi:
+                <input id="inputvalue" type="number" min="1" max="10" />
+                <button onclick="addPolls('')">Legg til stolpe</button>
+                <button onclick="editPolls('')" ${chosenBar == 'ingen' ? 'disabled' : ''}>Endre valgt stolpe</button><br />
+                <button onclick="removePolls()" ${chosenBar == 'ingen' ? 'disabled' : ''}>Fjerne valgt stolpe</button>
+                `;
+        }
+
+        function createBar(number, barNo) {
+            const width = 8;
+            const spacing = 2;
+            let x = (barNo - 1) * (width + spacing);
+            let height = number * 6;
+            let y = 60 - height;
+            let color = calcColor(1, 10, barNo);
+
+
+            let border = 0;
+            if (chosenBar != 'ingen' && barNo == chosenBar) {
+                border = 1;
+            }
+
+            return `
+            <rect onclick="chooseBar(${barNo})"
+            width="${width}"
+            height="${height}"
+            x="${x}"
+            y="${y}"
+            stroke="black"
+            stroke-width="${border}"
+            fill="${color}"
+            ></rect>
+            `;
+        }
+
+        function calcColor(min, max, val) {
+            var minColor = 240, maxColor = 0;
+            var curPercent = (val - min) / (max - min);
+            var colString = "hsl(" + ((curPercent * (maxColor - minColor)) + minColor) + ",100%,50%)";
+            return colString;
+        }
+
+        // controller
+
+        function chooseBar(barNo) {
+            if (chosenBar == barNo) {
+                chosenBar = "ingen";
+            }
+            else {
+                chosenBar = barNo;
+
+            }
+            show();
+        }
+
+
+
+        function addPolls() {
+            let input = document.getElementById('inputvalue')
+          
+            if (input.value == '') {
+                return alert('Du må sette en verdi!')
+            }
+            if (input.value < 1 || input.value > 10) {
+                return (alert('Du må velge en verdi mellom 1 og 10'))
+            }
+            if (numbers.length >= 8) {
+                return (alert('Du kan ikke ha mer enn 8 stolper'))
+            }
+            else {
+                numbers.push(parseInt(input.value))
+            }
+            show()
+        }
+
+
+        function editPolls() {
+            let input = document.getElementById('inputvalue')
+            if (input.value == '') {
+                return alert('Du må sette en verdi!')
+            }
+            else {
+                numbers[parseInt(chosenBar) - 1] = parseInt(input.value);
+            }
+
+            show();
+        }
+
+
+
+
+        function removePolls() {
+            numbers.splice(parseInt(chosenBar) - 1, 1)
+            chosenBar = 'ingen';
+            show();
+
+        }
+
+    </script>
+</body>

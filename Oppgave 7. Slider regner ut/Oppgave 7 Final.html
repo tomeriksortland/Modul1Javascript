@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Oppgave 7, </title>
+</head>
+<body>
+    <h1>Ferdighet 7 </h1>
+    <input id="tallA" type="range" min="1" max="1000" step="1" oninput="calculate()" value="2" />
+    <input id="tallB" type="range" min="1" max="1000" step="1" oninput="calculate()" value="2" />
+    <div id="resultatH"></div>
+    <div id="resultatB"></div>
+    
+    <script>
+        var resultatDivH = document.getElementById('resultatH');
+        var tallAInput = document.getElementById('tallA');
+        var resultatDivB = document.getElementById('resultatB');
+        var tallBInput = document.getElementById('tallB');
+        calculate();
+        function calculate() {
+            
+            var tallA = parseInt(tallAInput.value);
+            var sum = tallA;
+            var tallB = parseInt(tallBInput.value);
+            var sum = tallB;
+            var areal = tallA * tallB;
+            var omkrets = tallA * tallA + tallB * tallB;
+
+            resultatDivH.innerHTML = '' +
+                'Høyde' + '=' + tallA + '<br/>'
+                
+
+            resultatDivB.innerHTML = '' +
+                'Bredde' + '=' + tallB  + '<br/>' +
+                'Areal' + '=' + tallA + '*' + tallB + '=' + areal + '<br/>' +
+                'Omkrets' + '=' + tallA + '*' + tallA + '+' + tallB + '*' + tallB + '=' + omkrets + '<br/>'
+        }
+    </script>
+</body>
+</html>

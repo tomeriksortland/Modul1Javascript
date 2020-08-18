@@ -1,0 +1,36 @@
+﻿<html lang="en-Us">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Event test</title>
+</head>
+<style>
+    
+</style>
+
+<body>
+    <button id="resultatButton" onclick="showDiv(300, 500, 'You clicked on the 1st button', 'pink', this)">Click me</button>
+    <hr>
+    <button id="resultat2Button" onclick="showDiv(500, 100, 'You clicked on the 2nd button', 'green', this)">Right Click me</button>
+    <hr>
+    <button id="resultat3Button" onclick="showDiv(150, 300, 'You clicked on the 3rd button', 'grey', this)">Click me</button>
+
+
+    <script>
+
+        function showDiv(width, height, text, color, buttonid) {
+            text = text + ' ';
+            text = text + ' ';
+            var backgroundColorStyle = 'background-color: ' + color + ';';
+            var widthStyle = 'width: ' + width + 'px;';
+            var heightStyle = 'height: ' + height + 'px;';
+            var style = 'style="' + backgroundColorStyle + widthStyle + heightStyle + '"';
+            buttonid.innerHTML = '<div ' + style + '>' + text + '</div';
+        }
+      
+    </script>
+
+
+</body>
+
+</html>

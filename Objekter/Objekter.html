@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid lightgrey;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        td,
+        th {
+            padding: 10px;
+        }
+
+        th {
+            background-color: darkblue;
+            border: 1px solid darkblue;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="tasksTable">
+
+
+    </table>
+
+    <table>
+
+
+        <div>
+
+            <td>Oppgave: <input id="taskDescription"></td>
+            <td>Person: <input id="taskPerson" type="text"></td>
+            <td>Dato: <input id="taskDate" type="date" /><button onclick="addtask()">Legg til ny oppgave</button></td>
+
+        </div>
+
+
+    </table>
+
+    <script>
+        // Model
+        let tasks = [
+            { description: 'Handle til middag', person: 'Tom Erik', date: '', isItDone: '', isDone: false },
+            { description: 'Lage middag', person: 'Tom Erik', date: '', isItDone: '', isDone: false },
+
+        ];
+        let dateNow = new Date();
+
+        // View
+        var tasksTable = document.getElementById('tasksTable')
+        show()
+
+        function show() {
+            let html = `
+        <tr>
+                <th>Oppgaver</th>
+                <th>Person</th>
+                <th>Når skal det gjøres?</th>
+                <th>Når det ble gjort</th>
+                <th>Done?</th>
+                <th></th>
+
+            </tr> `;
+
+            for (let i = 0; i < tasks.length; i++) {
+                html += createHtmlRow(i);
+            }
+
+            tasksTable.innerHTML = html;
+        }
+
+        function createHtmlRow(i) {
+            const task = tasks[i]
+            const checkedHtml = task.isDone ? 'checked="checked"' : '';
+            if (!task.editMode) return `<tr>
+                         <td>${task.description}</td>
+                         <td>${task.person}</td>
+                         <td>${task.date}</td>
+                         <td>${task.isItDone}</td>
+                         <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml} /></td>
+                    <td>
+                         <button onclick="removeTask(${i})">Slett</button>
+                         <button onclick="editTask(${i})">Rediger</button>
+                    </td>
+                    </tr>  `;
+
+            return `<tr>
+                         <td><input id="editDescription${i}" type="text" value="${task.description}"</td>
+                         <td><input id="editPerson${i}" type="text" value="${task.person}"</td>
+                         <td><input id="editDate${i}" type="date" value="${task.date}"</td>
+                         <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml} /></td>
+                    <td>
+                         <button onclick="updateTask(${i}), updatePerson(${i}), updateDate(${i})">Lagre</button>
+                    </td>
+                    </tr>  `;
+
+        }
+
+        // Controller
+        let taskDescriptionInput = document.getElementById('taskDescription');
+        let taskPersonInput = document.getElementById('taskPerson');
+        let taskDateInput = document.getElementById('taskDate');
+        
+
+        function addtask() {
+            tasks.push(
+                {
+                    description: taskDescriptionInput.value,
+                    person: taskPersonInput.value,
+                    date: taskDateInput.value,
+                    isItDone: '',
+                    isDone: false
+                });
+            taskDescriptionInput.value = '';
+            taskPersonInput.value = '';
+            taskDateInput.value = '';
+            show();
+        }
+
+
+
+
+        function changeIsDone(checkbox, index) {
+            tasks[index].isDone = checkbox.checked;
+
+            if (checkbox.checked) {
+                tasks[index].isItDone = dateNow.toLocaleDateString("nb-no");
+
+            }
+            else {
+                tasks[index].isItDone = '';
+            }
+
+
+            show();
+        }
+
+        function removeTask(index) {
+            tasks.splice(index, 1);
+            show();
+        }
+
+        function editTask(index) {
+            tasks[index].editMode = true;
+            show();
+        }
+
+        function updateTask(index) {
+            const id = `editDescription${index}`;
+            const inputTag = document.getElementById(id);
+            const task = tasks[index];
+            task.description = inputTag.value;
+        }
+
+        function updatePerson(index) {
+            const id2 = `editPerson${index}`;
+            const inputTag2 = document.getElementById(id2);
+            const task = tasks[index];
+            task.person = inputTag2.value;
+        }
+
+        function updateDate(index) {
+            const id3 = `editDate${index}`;
+            const inputTag3 = document.getElementById(id3);
+            const task = tasks[index];
+            task.date = inputTag3.value;
+            task.editMode = false;
+            show();
+        }
+
+    </script>
+
+
+</body>
+
+</html>

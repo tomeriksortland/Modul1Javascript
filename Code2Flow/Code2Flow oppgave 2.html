@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code2Flow, oppgave 2.</title>
+
+    <style>
+        button {
+            padding: 20px;
+            font-size: 20px;
+        }
+    
+    
+    </style>
+</head>
+<body onload="loading()">
+   
+    <h1 id="header"></h1>
+   
+   <button onclick="doSomething(this)" id="f1">F1</button>
+   <button onclick="doSomething(this)" id="y">Yes.</button>
+   <button onclick="doSomething(this)" id="n">No.</button>
+   <button onclick="doSomething(this)" id="n2">No.</button>
+
+
+</body>
+<script>
+    var f1 = document.getElementById('f1');
+    var yes = document.getElementById('y');
+    var no = document.getElementById('n');
+    var yes2 = document.getElementById('y2')
+    var no2 = document.getElementById('n2')
+    var header = document.getElementById('header')
+
+
+    function loading() {
+        f1.style.display = "initial";
+        yes.style.display = "none";
+        no.style.display = "none";
+        no2.style.display = "none";
+        header.innerHTML = "If you want to enter boot menu press F1";
+        setTimeout(function () { header.innerHTML = 'End of booting.'}, 7000);
+        setTimeout(function () { f1.style.display = 'none'}, 7000);
+
+    }
+
+
+    function doSomething(booting) {
+
+            if (booting == f1) {
+                header.innerHTML = "Do you want to boot from Network?"
+                f1.style.display = 'none';
+                yes.style.display = 'initial';
+                no.style.display = 'initial';
+            }
+
+            if (booting == yes) {
+                header.innerHTML = "Booting from Network.";
+                yes.style.display = 'none';
+                no.style.display = 'none';
+                setTimeout(function () {header.innerHTML = 'End of Booting'}, 4000);
+            }
+            else if (booting == no){
+                header.innerHTML = "Do you want to boot from CD-ROM?";
+                no.style.display = 'none'
+                yes.style.display = 'initial';
+                no2.style.display = 'initial';
+            }
+            if (booting == yes) {
+                header.innerHTML = "Booting from CD-ROM";
+                yes.style.display = 'none';
+                no.style.display = 'none';
+                setTimeout(function () {header.innerHTML = 'End of Booting'}, 4000);
+            }
+            else if (booting == no2) {
+                header.innerHTML = "Booting default options";
+                yes.style.display = 'none';
+                no2.style.display = 'none';
+                setTimeout(function () {header.innerHTML = 'End of Booting'}, 4000);
+            }
+    }
+    
+ 
+</script>
+
+</html>

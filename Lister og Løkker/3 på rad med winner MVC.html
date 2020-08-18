@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Tre på rad</title>
+    <style type="text/css">
+        .button {
+            color: red;
+            background-color: Blue;
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 2px;
+            font-size: 300%;
+            font-family: helvetica;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .first {
+            clear: left;
+        }
+
+        #board {
+            width: 600px;
+            height: 600px;
+        }
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="winner"></h1>
+    <div id="board"></div>
+
+
+
+    <script type="text/javascript">
+        // hjelpe variabler 
+
+        let boardDiv = document.getElementById('board')
+        let winnerHeader = document.getElementById('winner')
+
+
+        // model
+
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let bwinner;
+        
+        // view
+
+        showBoard();
+        function showBoard() {
+            let html = " ";
+            
+            for (i = 0; i < board.length; i++) {
+                let first = i % 3 == 0 ? 'first' : '';
+                html += `
+                <div class="button ${first}" onclick="setX(${i})">${board[i]}</div>
+                `; checkWinning();
+            }
+            boardDiv.innerHTML = html;
+            
+            
+            if (bwinner == 'x' || bwinner == 'o') {
+            winnerHeader.innerHTML = `Vinneren er ${bwinner} . <br>
+                Trykk her for og starte på nytt : <button  onclick="restartgame()">Reset</button>`
+
+            }
+            else {
+                winnerHeader.innerHTML = ``;
+                
+            }
+            
+        }
+
+
+        // controller
+
+        function setX(divElement) {
+            if (board[divElement] !== 'x' && board[divElement] !== 'o') {
+                board[divElement] = 'x';
+
+                showBoard();
+                setO();
+                checkConditions();
+            }
+        }
+
+        function setO() {
+            var allDivs = document.getElementsByTagName('div');
+            var emptyFields = Array.from(board.keys()).filter(i => board[i] === '');
+
+            if (emptyFields.length > 0) {
+                var index = Math.floor(Math.random() * emptyFields.length);
+                var blankIndex = emptyFields[index];
+                board[blankIndex] = "o";
+
+            }
+
+            showBoard();
+
+        }
+
+        function checkConditions() {
+
+            checkWinning(0, 1, 2) // rad 1
+                || checkWinning(3, 4, 5) // rad 2
+                || checkWinning(6, 7, 8) // rad 3
+                || checkWinning(0, 3, 6) // kolonne 1
+                || checkWinning(1, 4, 7) // kolonne 2
+                || checkWinning(2, 5, 8) // kolonne 3
+                || checkWinning(0, 4, 8) // diagonal 1
+                || checkWinning(2, 4, 6); // diagonal 2
+        }
+
+
+        function checkWinning(indeks1, indeks2, indeks3) {
+            const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+            
+            if (board[indeks1] == 'x' && board[indeks2] == 'x' && board[indeks3] == 'x'
+                || board[indeks1] == 'o' && board[indeks2] == 'o' && board[indeks3] == 'o') {
+                bwinner = board[indeks1];
+                
+                showBoard();
+
+            }
+
+        }
+        function restartgame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+             winnerHeader.innerHTML = ``;
+             bwinner = '';
+            
+            showBoard();
+        }
+
+    </script>
+</body>
+
+</html>

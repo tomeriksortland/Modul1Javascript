@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<style>
+    body {
+        background-color: orange
+    }
+    h1 {
+        margin-left: 750px;
+        margin-top: 300px;
+        color:dodgerblue
+    }
+    h2 {
+        margin-left: 750px;
+        padding-top: 20px;
+        color:dodgerblue
+    }
+    </style>
+<body>
+    <h1> Hva skal jeg lære på Start IT?</h1>
+    <h2 onclick="doSomething1()" id="Kaste"> Kaste bort tid.</h2>
+    <h2 onclick="doSomething2()" id="Lære"> Lære code og få forståelse for det.</h2>
+    <h2 onclick="doSomething3()" id="Kryss"> Sitte med beina i kryss. </h2>
+
+    <script>
+        function doSomething1() {
+            document.getElementById('Kaste').innerHTML = 'Feil!';
+        }
+         function doSomething2() {
+             document.getElementById('Lære').innerHTML = 'Riktig!';
+        }
+         function doSomething3() {
+             document.getElementById('Kryss').innerHTML = 'Feil!';
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>

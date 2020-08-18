@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<style>
+    body {
+        background-color: pink
+    }
+    button {
+        position: relative;
+        left: 40%;
+        color:dodgerblue;
+    }
+    h1 {
+        position: relative;
+        left:40%;
+        color:dodgerblue
+    }
+    </style>
+<body>
+    <h1> Hva skal jeg lære på Start IT?</h1>
+        <button onclick="doSomething1()" id="Button1"> Tykk her!</button>
+        <button onclick="doSomething2()" id="Button2"> IKKE TRYKK HER!</button>
+        <button onclick="doSomething3()" id="Button3"> Kanskje du skal trykke her?</button>
+
+        <script>
+            function doSomething1() {
+                alert('Du Trykkte!')
+                console.log('Button1')
+            }
+            function doSomething2() {
+                alert('Jeg sa du ikke skulle trykke!!')
+                console.log('Button2')
+            }
+            function doSomething3() {
+                alert('Du tok sjansen ja....')
+                console.log('Button3')
+            }
+
+
+
+
+
+
+        </script>
+</body>
+</html>

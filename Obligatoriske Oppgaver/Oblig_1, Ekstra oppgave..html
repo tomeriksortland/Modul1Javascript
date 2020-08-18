@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Obligatorisk oppgave 1</title>
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .all {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 17fr;
+            grid-template-rows: 1fr 15fr;
+            grid-template-areas: 'header header' 'meny bckgrnd';
+        }
+
+        .header {
+            background-color: grey;
+            grid-area: header;
+            font-size: 40px;
+            text-align: center;
+        }
+
+
+        .menu {
+            background-color: lightblue;
+            grid-area: meny;
+        }
+
+        #elementsToHide {
+            display: none;
+        }
+
+        .bckgrnd {
+            background-color: orangered;
+            grid-area: bckgrnd;
+        }
+
+        h2 {
+            display: inline;
+        }
+
+        button {
+            padding: 15px;
+            margin: 10px;
+        }
+
+        .Knapp1 {
+            background-color: green;
+            color: blue;
+            outline: 5px solid orange;
+        }
+
+        .Knapp2 {
+            background-color: blue;
+            color: red;
+            outline: 5px dashed black;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div class="all">
+
+        <div class="header">Dette er Tom Erik sin oblig oppgave 1</div>
+
+        <div onclick="doSomething()" class="menu">Åpene menyen her!</div>
+
+        <div class="bckgrnd">
+            <div id="elementsToHide">
+                <h2 id="Overskrift">Tykk på knappene og se hva som skjer.</h2>
+                </br>
+                <button onclick="changeColor(this,'Knapp1', 'Da ble denne grønn')" id="Bytt1" class="styleA">Trykk og se hva som skjer.</button>
+                <button onclick="changeColor(this, 'Knapp2', 'Og denne ble blå')" id="Bytt2" class="styleB">Trykk og se hva som skjer.</button>
+            </div>
+            Du har kjørt changeColor() <b id="countA">0</b> ganger og doSomething() <b id="countB">0</b> ganger.
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        var editheader = document.getElementById('Overskrift')
+        var byttetxt1 = document.getElementById('Bytt1')
+        var byttetxt2 = document.getElementById('Bytt2')
+        var clickcounter = 0;
+        var menucounter = 0;
+        var showcountclicksA = document.getElementById('countA')
+        var showcountmenu = document.getElementById('countB')
+
+        
+        function doSomething() {
+            var MenyStyle = document.getElementById("elementsToHide").style;
+            MenyStyle.display = MenyStyle.display === "block" ? "none" : "block";
+            menucounter++;
+            showcountmenu.innerHTML = menucounter;
+            //if (Meny.style.display === "block") {
+            //    Meny.style.display = "none";
+            //} else {
+            //    Meny.style.display = "block";
+            //}
+        }
+        function changeColor(click, btn, text) {
+            clickcounter++;
+            showcountclicksA.innerHTML = clickcounter;
+            editheader.classList.toggle(btn)
+            click.classList.toggle(btn)
+            byttetxt1.innerHTML = text
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

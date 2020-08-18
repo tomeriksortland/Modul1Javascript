@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1 id="cf.kjbg">Hei!</h1>
+    <button onclick="countDown(this)">Hallo</button>
+    <button onclick="countDown(this)">Hurra</button>
+    <button onclick="countDown(this)">Tjoho</button>
+
+    <script>
+        //countDown();
+
+        function countDown(button) {
+            document.getElementById('cf.kjbg').innerHTML = button.innerHTML;
+            button.innerHTML = 'x';
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <p>Ferdighet 9c - Valgsetninger - Sammenligne to objekter (f.eks. er det samme div-element i to elementer?)</p>
+    <div id="a" onclick="doClick(this)" style="background-color: pink">A</div>
+    <div id="b" onclick="doClick(this)" style="background-color: lightgreen">B</div>
+    <div id="c" onclick="doClick(this)" style="background-color: lightblue">C</div>
+    <div id="info"  >Tykk på en firkant!</div>
+    <br><br>
+    <div id="info2" ></div>
+
+    <script>
+        var infoDiv = document.getElementById('info');
+        var infoDiv2 = document.getElementById('info2');
+        var divA = document.getElementById('a');
+        var divB = document.getElementById('b');
+        var divC = document.getElementById('c');
+        var buttonClicked1;
+        var buttonLastClicked;
+        var buttonBeofreLastClicked;
+        
+        function doClick(buttonClicked) {
+            buttonBeofreLastClicked = buttonLastClicked;
+            buttonLastClicked = buttonClicked1;
+            buttonClicked1 = buttonClicked;
+
+infoDiv.innerHTML = "Trykket på firkant: " + buttonClicked.innerHTML;
+
+if(buttonClicked == buttonLastClicked){
+    infoDiv.innerHTML = " <br> Trykket på den samme igjen! (" + buttonLastClicked.innerHTML + ")";
+}
+
+if(buttonClicked == buttonBeofreLastClicked && buttonClicked == buttonLastClicked){
+    infoDiv.innerHTML = "<br> Trykket på den samme for tredje gang!! (" + buttonBeofreLastClicked.innerHTML + ")";
+}
+if(buttonClicked == buttonBeofreLastClicked && buttonClicked != buttonLastClicked){
+    infoDiv2.innerHTML += buttonBeofreLastClicked.innerHTML + "<br> klikket du på for 2 ganger siden - og nå";
+}
+
+
+           
+            // infoDiv.innerHTML = 'Du trykket på firkant ';
+            // if (buttonClicked == divA) infoDiv.innerHTML += 'A';
+            // else if (buttonClicked == divB) infoDiv.innerHTML += 'B';
+            // else if (buttonClicked == divC) infoDiv.innerHTML += 'C';
+            
+            
+            // if (buttonLastClicked == buttonClicked)
+            //     infoDiv.innerHTML += ' (samme som forrige gang)';
+            // buttonLastClicked = buttonClicked;
+            
+}
+    
+    </script>
+</body>
+</html>

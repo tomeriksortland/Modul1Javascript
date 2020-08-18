@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Oppgave 5</title>
+
+
+    <style>
+
+
+
+
+
+    </style>
+</head>
+
+<body onload="LoadOnLoad()">
+    
+    <h1>Ferdighet 5</h1>
+    <button onclick="ClickThis()">Trykk her</button>
+    <div id="LoadOnLoad"></div>
+    <div id="Last"></div>
+    <img src="city.jpg">
+
+    
+
+    <script>
+         alert('Dette skjer når siden lastes');
+        
+        function LoadOnLoad() {
+             var test2 = document.getElementById("LoadOnLoad")
+             test2.innerHTML = new Date().toTimeString() + "Dette er fra LoadonLoad";
+        }   // Denne logger tiden og legger det i teksten til "LoadOnLoad"
+        function ClickThis() {
+            var test = document.getElementById("Last");
+            test.innerHTML = new Date().toTimeString() + "Dette er fra Last";
+        }   // Denne logger tiden og legger det i teksten til "Last"
+
+         
+    </script>
+</body>
+
+</html>

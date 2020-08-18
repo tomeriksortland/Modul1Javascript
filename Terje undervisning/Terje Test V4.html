@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .effect1 {
+            background-color: darkblue;
+            color: white;
+            border: pink dashed 5px;
+            border-radius: 10px;
+        }
+
+        button{
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="cf.kjbg">Hei!</h1>
+    <button onclick="countDown(this)">A</button>
+    <button onclick="countDown(this)">B</button>
+    <button onclick="countDown(this)">C</button>
+
+    <script>
+        var lastClickedButton;
+
+        function countDown(button) {            
+            button.classList.add('effect1');
+            if (lastClickedButton) {
+                lastClickedButton.classList.remove('effect1');
+            }
+            lastClickedButton = button;
+        }
+
+
+
+    </script>
+</body>
+</html>

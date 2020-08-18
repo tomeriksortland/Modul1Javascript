@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    
+    <select id="choseColor" onclick="chose(this)">
+        <option></option>
+        <option>Svart</option>
+        <option>Mørkblå</option>
+        <option>Lysgrå</option>
+        <option>Lysgrønn</option>
+        <option>Lysrød</option>
+    </select>
+       
+    <br>
+       
+        <div id="chosenColor">Hei på Deg!</div>
+
+
+    <script>
+
+        let farge;
+        setColor();
+        chose();
+        
+        function chose(select) {
+            farge = select.value;
+            setColor();
+        }
+
+        function setColor() {
+            let output = document.getElementById('chosenColor')
+
+            if (farge == 'Svart') { output.style.backgroundColor = 'black' };
+            if (farge == 'Mørkblå') { output.style.backgroundColor = 'darkblue'};
+            if (farge == 'Lysgrå') { output.style.backgroundColor = 'lightgrey'};
+            if (farge == 'Lysgrønn') { output.style.backgroundColor = 'lightgreen'}
+            if (farge == 'Lysrød') { output.style.backgroundColor = 'lightcoral'}
+            if (farge == 'Svart' || farge == 'Mørkblå') { output.style.color = 'white'}
+            if (farge == 'Lysgrå' || farge == 'Lysgrønn' || farge == 'Lysrød') { output.style.color = 'black'}
+
+        }
+
+
+    </script>
+
+</body>
+</html>

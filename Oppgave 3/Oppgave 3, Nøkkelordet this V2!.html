@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Dette er en liten test</title>
+
+
+    <style>
+        body {
+            background-image: url(art.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        table {
+            width: 400px;
+            height: 400px;
+            border-spacing: 0;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -300px;
+            margin-left: -230px;
+            background-color: lightsalmon;
+        }
+
+        td {
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            border: 2px solid white;
+            text-align: center;
+            font-size: 30px;
+            color: royalblue;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <table>
+
+        <tr>
+            <td onclick="doSomething(this)">o</td>
+            <td onclick="doSomething(this)">o</td>
+            <td onclick="doSomething(this)">o</td>
+        </tr>
+        <tr>
+            <td onclick="doSomething(this)">o</td>
+            <td onclick="doSomething(this)">o</td>
+            <td onclick="doSomething(this)">o</td>
+        <tr>
+            <td onclick="doSomething(this)">o</td>
+            <td onclick="doSomething(this)">o</td>
+            <td onclick="doSomething(this)">o</td>
+        </tr>
+
+    </table>
+
+
+    <script>
+
+        function doSomething(test) {
+            test.innerHTML = 'x';
+        }
+
+    </script>
+</body>
+
+</html>

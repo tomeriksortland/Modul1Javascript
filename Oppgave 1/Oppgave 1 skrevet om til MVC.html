@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    
+    <div id="content"></div>
+    
+    <script>
+        
+        // Hjelpevariabel
+        let showContent = document.getElementById('content')
+
+        // Model         
+        let clickedNameIndex = -1;
+        let correctNameIndex = 1;
+        let names = [
+            'Jens',
+            'Tom Erik',
+            'Truls'
+        ];
+        let clickedName = '';
+
+        // View
+        show();
+        function show() {
+
+            let html = " "; 
+
+                `
+                <h1>Hva heter jeg? </h1>
+                <br>`;
+            for (let nameIndex = 0; nameIndex < names.length; nameIndex++) {
+                html += ` <h1 onclick="whatNameYouClicked(${nameIndex})">${names[nameIndex]}</h1>`;
+            }
+            showContent.innerHTML = html;
+     
+            html += `
+                <br>
+                <h1>Heter jeg ${clickedName}? ${correctNameIndex === clickedNameIndex ? 'Riktig' : 'Feil'}</h1>
+                `;
+                showContent.innerHTML = html;
+        }
+
+        
+        // Controller
+        function whatNameYouClicked(clickedIndex) {
+            clickedNameIndex = clickedIndex;
+            clickedName = names[clickedIndex];
+            show();
+        }
+    </script>
+</body>
+
+</html>

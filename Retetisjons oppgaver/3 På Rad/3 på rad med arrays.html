@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>3 På Rad</title>
+
+
+    <style>
+        /* body {
+            background-image: url(art.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        } */
+
+
+        div {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 10px;
+            background-color: lightsalmon;
+            color: green;
+            text-align: center;
+            font-size: 100px;
+            vertical-align: middle;
+        }
+
+        div.a {
+            clear: left;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <div class="a" onclick="doSomething(this)"></div>
+    <div onclick="doSomething(this)"></div>
+    <div onclick="doSomething(this)"></div>
+
+    <div class="a" onclick="doSomething(this)"></div>
+    <div onclick="doSomething(this)"></div>
+    <div onclick="doSomething(this)"></div>
+
+    <div class="a" onclick="doSomething(this)"></div>
+    <div onclick="doSomething(this)"></div>
+    <div onclick="doSomething(this)"></div>
+
+
+
+    <script>
+
+        function doSomething(button) {
+
+            if (button.innerHTML !== 'x' && button.innerHTML !== 'o') {
+                button.innerHTML = 'x';
+            }
+       
+        var divs1 = document.getElementsByTagName('div');
+        var divs2 = new Array();
+        
+       
+        for (var i = 0; i < divs1.length; i++) {
+          
+           if (divs1[i].innerHTML !== 'x' && divs1[i].innerHTML !== 'o') {
+                divs2.push(divs1[i]);
+            }
+        }
+
+        if (divs2.length > 0) {
+            var index = Math.floor(Math.random() * divs2.length);
+            divs2[index].innerHTML = 'o';
+            divs2[index].style.color = 'blue';
+        }
+    }
+
+    </script>
+</body>
+
+</html>

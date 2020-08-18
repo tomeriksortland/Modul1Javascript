@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stein, saks og papir!</title>
+
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <img src="Rock.jfif" onclick="rps(this)" id="stein">Stein
+    <img src="Paper.gif" onclick="rps(this)" id="papir">papir
+    <img src="saks.jpg" onclick="rps(this)" id="saks">Saks
+    <br>
+    <hr>
+    <div id="output"> Du valgte :</div>
+    <div id="aiOutput">Ai Valgte : </div>
+    <div id="pepperkaker">
+        </div>
+
+        <script>
+            var aiOutput = document.getElementById('aiOutput')
+            var stein = document.getElementById('stein');
+            var papir = document.getElementById('papir');
+            var saks = document.getElementById('saks');
+            var output = document.getElementById('output');
+            var output2 = document.getElementById('pepperkaker')
+            var pChoice;
+            var cpuChoice;
+            victory();
+            draw();
+            loss();
+            function rps(tull) {
+
+                 pChoice = tull.id;
+
+                var cpu = 1 + Math.floor(Math.random() * 3);
+                aiOutput.innerHTML += cpuChoice + '---'
+                output.innerHTML += pChoice + '---' ;
+                if (cpu == 1) {
+                    cpuChoice = 'stein'
+                }
+                if (cpu == 2) {
+                    cpuChoice = 'papir'
+
+                }
+                if (cpu == 3) {
+                    cpuChoice = 'saks'
+                }
+
+                console.log(cpuChoice)
+                victory();
+            }
+
+            function victory() {
+                if (pChoice == 'stein' && cpuChoice == 'saks'
+                    || pChoice == 'papir' && cpuChoice == 'stein'
+                    || pChoice == 'saks' && cpuChoice == 'papir') {
+                    output2.innerHTML =  'Jeg er best, det sa min mor'; }
+                        draw();
+                        loss();
+            }
+            function draw() {
+                if (pChoice == 'stein' && cpuChoice == 'stein'
+                || pChoice == 'papir' && cpuChoice == 'papir'
+                || pChoice == 'saks' && cpuChoice == 'saks') {
+                    output2.innerHTML = 'DRAW!'
+                    loss();
+                    victory();
+                }
+            }
+            function loss() {
+                if (pChoice == 'stein' && cpuChoice == 'papir'
+                || pChoice == 'papir' && cpuChoice == 'saks'
+                || pChoice == 'saks' && cpuChoice == 'stein') {
+                    output2.innerHTML = 'Jeg er ikke best, det sa min far'
+                    victory() ;
+                    draw() ;
+            }
+
+        }
+
+
+
+
+
+        </script>
+
+
+</body>
+
+</html>

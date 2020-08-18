@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>En Test</title>
+</head>
+<style>
+   body {
+       background-image: url("pic.JPG");
+       background-repeat: no-repeat;
+   } 
+
+    h1 {
+        color: red;
+    }
+    h2 {
+        color: orange;
+        width:200px;
+        border:15px solid green;
+        padding:50px;
+        margin:auto
+    }
+    div {
+        position:relative;
+        text-align: center
+    }
+
+</style>
+<body>
+    <div>
+
+    <h1>Hva har jeg lært?</h1>
+
+    <h2 id="a" onmouseover="doSomething(this)">Hva har jeg lært?</h2>
+    <h2 id="b" onmouseover="doSomething(this)">Hva har jeg lært?</h2>
+    <h2 id="c" onmouseover="doSomething(this)">Hva har jeg lært?</h2>
+    <h2 id="d" onmouseover="doSomething(this)">Hva har jeg lært?</h2>
+    <h2 id="e" onmouseover="doSomething(this)">Hva har jeg lært?</h2>
+    </div>
+
+    <script>
+        function doSomething(Test) {
+            Test.innerHTML = 'This funksjon med mouseover.';
+        }
+    </script>
+</body>
+</html>

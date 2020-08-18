@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        
+        .test1 {
+            outline-style: solid;
+            outline-color: navy;
+        }
+        .test2 {
+            color: forestgreen;
+        }
+        .test3 {
+            padding-left: 200px;
+        }
+        .test4 {
+            font-size: 25px;
+        }
+        .test10 {
+            outline-style:dotted;
+            outline-color: red;
+        }
+        .test11 {
+            color: yellow;
+        }
+        .test12 {
+            padding-left: 300px;
+        }
+        .test13 {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ferdighet 8</h1>
+    <input id="text" type="text"/>
+    <h2 id="overskrift">Overskrift</h2>
+    <button onclick="doSomethingA(this)">A</button>
+    <button onclick="doSomethingB(this)">B</button>
+</br>
+
+    <script>
+        var textInput = document.getElementById('text');
+        var h2Element = document.getElementById('overskrift');
+        
+        function doSomethingA(clickedElement) {
+            textInput.style.backgroundColor = 'red';
+            h2Element.style.backgroundColor = 'red';
+            clickedElement.style.backgroundColor = 'red';
+            textInput.classList.remove('test10');
+            h2Element.classList.remove('test10');
+            textInput.classList.remove('test11');
+            h2Element.classList.remove('test11');
+            textInput.classList.remove('test12');
+            h2Element.classList.remove('test12');
+            textInput.classList.remove('test13');
+            h2Element.classList.remove('test13');
+            clickedElement.classList.add('test1');
+            textInput.classList.add('test1');
+            h2Element.classList.add('test1');
+            textInput.classList.add('test2');
+            h2Element.classList.add('test2');
+            textInput.classList.add('test3');
+            h2Element.classList.add('test3');
+            textInput.classList.add('test4');
+            h2Element.classList.add('test4');
+            textInput.value = "Dette er en grønn text";
+        }
+        function doSomethingB(clickedElement) {
+            textInput.style.backgroundColor = 'blue';
+            h2Element.style.backgroundColor = 'blue';
+            clickedElement.style.backgroundColor = 'blue';
+            clickedElement.classList.add('test10');
+            textInput.classList.add('test10');
+            h2Element.classList.add('test10');
+            textInput.classList.add('test11');
+            h2Element.classList.add('test11');
+            textInput.classList.add('test12');
+            h2Element.classList.add('test12');
+            textInput.classList.add('test13');
+            h2Element.classList.add('test13');
+            textInput.style.fontWeight = 'bolder';
+            h2Element.style.fontWeight = 'bolder';
+            clickedElement.style.fontWeight = 'bolder';
+            textInput.value = "Dette er en gul text";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Oppgave 9A </title>
+</head>
+<body>
+    <h1>Ferdighet 9A </h1>
+    <input id="tallA" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
+    <input id="tallB" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
+    
+    <div id="boxA" style="border: 2px solid black" onclick="selectdiv(this)">A</div>
+    <div id="boxB" style="border: 2px solid black" onclick="selectdiv(this)">B</div>
+</br>
+    <div id="resultatH" ></div>
+    <div id="resultatB" ></div>
+
+    <script>
+        var resultatDivH = document.getElementById('resultatH');
+        var resultatDivB = document.getElementById('resultatB');
+
+        var tallAInput = document.getElementById('tallA');
+        var tallBInput = document.getElementById('tallB');
+
+        var selecteddivvar;
+       
+        function selectdiv(clickeddiv) {
+             selecteddivvar = clickeddiv;
+             
+             //ta vare på høyde+bredde selv om man klikker seg inn på en annen div
+             if(clickeddiv != null){
+                 var oldHeight = clickeddiv.style.height.replace("px", "");
+                 var oldWidth = clickeddiv.style.height.replace("px", "");
+                 tallAInput.value = oldHeight;
+                 tallBInput.value = oldWidth;
+             }
+         }
+
+        calculate();
+        function calculate() {
+            var tallA = parseInt(tallAInput.value);
+            var tallB = parseInt(tallBInput.value);
+            var arealDiv = tallA * tallB;
+            
+            resultatDivH.innerHTML = '' +
+                'Høyde på div ' + '=' + tallA + '<br/>' +
+                'Bredde på div ' + '=' + tallB  + '<br/>' +
+                'Areal av div ' + '=' + arealDiv + '<br/>';
+
+              
+               
+                selecteddivvar.style.height = tallA + "px";
+                selecteddivvar.style.width = tallB + "px";
+        }
+       
+    
+    </script>
+</body>
+</html>

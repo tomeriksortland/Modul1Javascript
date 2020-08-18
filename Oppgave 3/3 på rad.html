@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>3 På Rad</title>
+
+
+    <style>
+        body {
+            background-image: url(art.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        table {
+            width: 600px;
+            height: 600px;
+            border-spacing: 0;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -300px;
+            margin-left: -300px;
+            background-color: lightsalmon;
+        }
+
+        td {
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            border: 2px solid white;
+            text-align: center;
+            font-size: 30px;
+            color: royalblue;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <table>
+
+        <tr>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+        <tr>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+            <td onclick="doSomething(this)"></td>
+        </tr>
+
+    </table>
+
+
+    <script>
+
+        function doSomething(button) {
+
+            if (button.innerHTML == '') {
+                button.innerHTML = 'x';
+            } else if (button.innerHTML == 'x') {
+                button.innerHTML = 'y'
+            } else {
+                button.innerHTML = '';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

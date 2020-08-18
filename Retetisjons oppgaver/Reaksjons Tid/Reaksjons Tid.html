@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+        
+        div.lights {
+            background-color: red;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            float: left;
+            margin: 10px;
+        }
+
+        div.newRow {
+            clear: left;
+        }
+
+        div.lightOn {
+            background-color: yellow;
+        }
+        
+        </style>
+    </head>
+
+    <body>
+        <div id="Timer"></div>
+        <br>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights newRow" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights newRow" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights newRow" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights newRow" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+        <div class="lights" onclick="removeLights(this)"></div>
+    
+        <script>
+          
+             addTarget();
+             var timer = document.getElementById('Timer');
+             var startTime = new Date().getTime();
+
+            function addTarget() {
+             startTime = new Date().getTime();
+            var elementsList = document.getElementsByClassName("lights");
+            var randomIndex = Math.floor(Math.random() * elementsList.length);
+            var selectedElement = elementsList[randomIndex];
+            var selectedElementsClassList = selectedElement.classList
+            selectedElementsClassList.add('lightOn');
+            }
+
+            function removeLights(clicked) {
+                
+                if (clicked.classList.contains('lightOn')) {clicked.classList.remove('lightOn'); 
+                var finishTime = new Date().getTime();
+                var spentMilliseconds = Math.floor(finishTime - startTime);
+                var spentSeconds = spentMilliseconds / 1000;
+                timer.innerHTML = 'Du brukte ' + spentSeconds + 'sekunder';
+
+                addTarget();
+                
+                }
+               
+            }
+
+       
+        </script>
+
+    </body>
+</html>
